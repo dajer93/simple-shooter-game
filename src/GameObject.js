@@ -8,7 +8,7 @@ class GameObject {
     this.health = health
   }
   intersects(other) {
-    var d = dist(this.x, this.y, other.x, other.y);
+    var d = sketch.dist(this.x, this.y, other.x, other.y);
     if (d < this.r + other.r) {
       return true;
     } else {
@@ -28,3 +28,5 @@ class GameObject {
     this.health -= value;
   }
 }
+
+export default GameObject;

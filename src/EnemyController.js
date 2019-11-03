@@ -1,3 +1,5 @@
+import Enemy from './Enemy';
+
 class EnemyController {
   constructor() {
     this.entities = [];
@@ -10,12 +12,12 @@ class EnemyController {
 
   create() {
     let newEnemy = new Enemy({
-      x: random(10, 140),
-      y: random(10, 390),
-      r: random(10, 20),
-      color: color(random(255), random(50), random(50)),
+      x: sketch.random(10, sketch.width),
+      y: sketch.random(10, 1/3*sketch.height),
+      r: sketch.random(10, 1/20*sketch.width),
+      color: sketch.color(sketch.random(255), sketch.random(50), sketch.random(50)),
       health: 100,
-      speed: random(1, 2),
+      speed: sketch.random(1, 2),
     });
     this.entities.push(newEnemy);
   }
@@ -28,10 +30,10 @@ class EnemyController {
       }
       if (this.entities[i] &&
         this.entities[i].x > 0 &&
-        this.entities[i].x < 400 &&
+        this.entities[i].x < sketch.width &&
         this.entities[i].y > 0 &&
-        this.entities[i].y < 400) {
-        this.entities[i].x += (1 * this.entities[i].speed);
+        this.entities[i].y < sketch.height) {
+        this.entities[i].y += (1 * this.entities[i].speed);
       } else {
         this.entities.splice(i, 1);
       }
@@ -40,13 +42,15 @@ class EnemyController {
 
   display() {
     for (let i = 0; i < this.entities.length; i++) {
-      fill(this.entities[i].col);
-      circle(
-        this.entities[i].y,
+      sketch.fill(this.entities[i].col);
+      sketch.circle(
         this.entities[i].x,
+        this.entities[i].y,
         this.entities[i].r
       );
     }
   }
 
 }
+
+export default EnemyController;
