@@ -13,15 +13,16 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.0",
+    "webpack-dev-server": "^3.10.3",
     "webpack-livereload-plugin": "^2.2.0",
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "start": "webpack --config webpack.config.dev.js",
+    "start": "webpack-dev-server --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
   },
   "dependencies": {
-    "p5": "^0.10.2"
+    "p5": "^0.10.2",
+    "path": "^0.12.7"
   }
 }
